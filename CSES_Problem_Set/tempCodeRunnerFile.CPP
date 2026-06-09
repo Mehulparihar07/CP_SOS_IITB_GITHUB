@@ -20,7 +20,7 @@ int main(){
         {
             frequencies[x[i]]++;
         }
-    for (int i = maximum ; i >= 1 ; i--)
+    for (int i = maximum ; i >= 1 ; i++)
     {
         int cnt = 0 ;
         for (int multiple = i ; multiple <= maximum ; multiple += i)
@@ -35,5 +35,7 @@ int main(){
         }
     
     }
+    
 
+    return 0 ;
 }
