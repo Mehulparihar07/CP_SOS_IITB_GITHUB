@@ -5,24 +5,31 @@ int main(){
     long long n;
     cin >> n;
 
-    long long sum = 0;
-    long long k = 1e9 + 7;
-
-    for (long long i = 1; i * i <= n; i++)
+    long long l = 1 ;
+    long long ans = 0 ;
+    long long k = 1e9 + 7 ;
+    while (l <= n)
     {
-        if (n % i == 0)
-        {
-            if (i * i == n)
-            {
-                sum = (sum + i % k) % k;
-            }
-            else
-            {
-                sum = (sum + i % k + (n / i) % k) % k;
-            }
-        }
+        long long q = n / l ;
+        long long r = n / q ;
+        long long a = r - l + 1 ;
+        long long b = l + r ;
+        
+        if(a % 2) b /= 2 ;
+        else a /= 2 ;
+
+        q %= k;
+        a %= k;
+        b %= k;
+
+        long long contrib = q * a % k;
+        contrib = contrib * b % k;
+
+        ans = (ans + contrib) % k;
+
+        l = r + 1 ;
     }
 
-    cout << sum << endl;
+    cout << ans << endl ;
     return 0;
 }
