@@ -1,49 +1,35 @@
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
 
-int main(){
-    int t ;
-    cin >> t ;
-    while (t--)
-    {
-        int n , k ;
-        cin >> n >> k ;
-        string s ;
-        cin >> s ;
+int main() {
+    int t;
+    cin >> t;
 
-        for (int i = 0 ; i < s.size() ; i++)
-        {
-            int j = i + k ;
-            if (j < s.size() && s[i] == '1' && s[j] == '1')
-            {
-               s[i] = '0' ;
-               s[j] = '0' ;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+
+        string s;
+        cin >> s;
+
+        bool ok = true;
+
+        for (int start = 0; start < k; start++) {
+            int xr = 0;
+
+            for (int i = start; i < n; i += k) {
+                xr ^= (s[i] - '0');
             }
-            if (j < s.size() && s[i] == '1' && s[j] == '0')
-            {
-            int x = j + k ;
-               if (x < s.size() && s[x] == '1')
-               {
-                s[i] = '0' ;
-                s[j] = '1' ;
-               }
-               
+
+            if (xr) {
+                ok = false;
+                break;
             }
-            
         }
-        bool csk = true ;
-        for (int i = 0 ; i < s.size() ; i++)
-        {
-            if (s[i] == '1')
-            {
-                csk = false ;
-            }
-            
-        }
-    if(csk) cout << "YES" << endl ;
-    else cout << "NO" << endl ;   
-     
+
+        cout << (ok ? "YES" : "NO") << '\n';
     }
-    
+
     return 0;
 }
