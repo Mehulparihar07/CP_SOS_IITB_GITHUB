@@ -20,24 +20,14 @@ int main(){
         int k = __gcd(x,y) ;
         for (int i = 1 ; i <= n ; i++)
         {
-        if (i % k != p[i] % k)
+        if (abs(p[i] - i) % k != 0)
         {
             ok = false;
             break;
         }
             
         }
-        if (ok)
-        {
-            cout << "YES" << endl ;
-        }
-        else
-        {
-            cout << "NO" << endl ;
-        }
-        
-        
-        
+        cout << (ok ? "YES" : "NO") << "\n" ;
 
     }
     
