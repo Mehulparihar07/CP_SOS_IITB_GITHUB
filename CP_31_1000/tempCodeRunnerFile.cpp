@@ -1,40 +1,37 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main() {
     int t ;
     cin >> t ;
     while (t--)
     {
-        int n , k ;
-        cin >> n >> k ;
-        vector<int> a(n+1) ;
-        vector<pair<int,int>> p(n+1) ;
-        for (int i = 1 ; i <= n ; i++)
+        long long a , b ;
+        cin >> a >> b ;
+        long long xr = 0 ;
+        for (long long i = 1 ; i <= 3 * 1e5 && i != a ; i++)
         {
-            cin >> a[i] ;
-            p[i].first = a[i] ;
-            p[i].second = i ;
-        }
-        sort(p.begin() + 1 ,p.end()) ;
-        sort(a.begin() + 1 , a.end()) ;
-        while (a[n] > 0)
-        {
-            int frequency = upper_bound(a.begin(), a.end(), a[n]) - lower_bound(a.begin(), a.end(), a[n]) ;
-            a[n- frequency + 1] -= k ;
-            p[n - frequency + 1].first -= k ;
-            if (a[n- frequency + 1] <= 0)
+            xr ^= i ;
+            if (xr == b)
             {
-               cout << p[n- frequency + 1].second << " " ;
+                if (i > a)
+                {
+                    cout << i << endl ;
+                    break ;
+                }
+                else
+                {
+                    cout << i + 1 << endl ;
+                    break ;
+                }
+                
+                
             }
-        sort(p.begin() + 1 ,p.end()) ;
-        sort(a.begin() + 1 , a.end()) ;   
+            
         }
         
-    cout << endl ; 
     }
     
-    return 0;
+    
+    return 0 ;
 }
